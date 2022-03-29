@@ -32,6 +32,14 @@ function App() {
     setCelebs(sortIt);
   };
 
+  const deleteCeleb = (celebToFind) => {
+    setCelebs((oldCelebs) => {
+      return oldCelebs.filter(
+        (celebs) => celebs.id !== celebToFind.id
+      );
+    });
+  };
+
   return (
     <div className="App">
       <h1>NICADO Contacts</h1>
@@ -77,6 +85,11 @@ function App() {
                 </td>
                 <td>
                   <h3>{elem.wonEmmy ? <p>🏆</p> : <p>💩</p>}</h3>
+                </td>
+                <td>
+                  <button className="random-button" onClick={() => deleteCeleb(elem)}>
+                  delete</button>
+
                 </td>
               </tr>
             );
