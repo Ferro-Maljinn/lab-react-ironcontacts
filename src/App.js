@@ -34,66 +34,74 @@ function App() {
 
   const deleteCeleb = (celebToFind) => {
     setCelebs((oldCelebs) => {
-      return oldCelebs.filter(
-        (celebs) => celebs.id !== celebToFind.id
-      );
+      return oldCelebs.filter((celebs) => celebs.id !== celebToFind.id);
     });
   };
 
   return (
     <div className="App">
       <h1>NICADO Contacts</h1>
-      <button className="random-button" onClick={addContact}>
-        Add a random celebrity
-      </button>
-      <button className="random-button" onClick={sortedByName}>
-        Sort by name
-      </button>
-      <button className="random-button" onClick={sortedByPopularity}>
-        Sort by popularity
-      </button>
+      <div id="btn-container">
+        <button className="random-button" onClick={addContact}>
+          Add a random celebrity
+        </button>
+        <button className="random-button" onClick={sortedByName}>
+          Sort by name
+        </button>
+        <button className="random-button" onClick={sortedByPopularity}>
+          Sort by popularity
+        </button>
+      </div>
 
       <table>
         <thead>
-          <tr>
-            <th>Picture</th>
-            <th>Name</th>
-            <th>Popularity</th>
-            <th>Won Oscar</th>
-            <th>Won Emmy</th>
-          </tr>
+          <div>
+            <tr>
+              <th>Picture</th>
+              <th>Name</th>
+              <th>Popularity</th>
+              <th>Won Oscar</th>
+              <th>Won Emmy</th>
+            </tr>
+          </div>
+          <hr className="hr-line"></hr>
         </thead>
         <tbody>
-          {celebs.map((elem, index) => {
-            return (
-              <tr key={elem.name + index}>
-                <td>
-                  <img
-                    src={elem.pictureUrl}
-                    alt="celeb pic"
-                    style={{ height: "100px" }}
-                  />
-                </td>
-                <td>
-                  <h3>{elem.name}</h3>
-                </td>
-                <td>
-                  <h3>{elem.popularity}</h3>
-                </td>
-                <td>
-                  <h3>{elem.wonOscar ? <p>🏆</p> : <p>💩</p>}</h3>
-                </td>
-                <td>
-                  <h3>{elem.wonEmmy ? <p>🏆</p> : <p>💩</p>}</h3>
-                </td>
-                <td>
-                  <button className="random-button" onClick={() => deleteCeleb(elem)}>
-                  delete</button>
-
-                </td>
-              </tr>
-            );
-          })}
+          <div>
+            {celebs.map((elem, index) => {
+              return (
+                <tr key={elem.name + index}>
+                  <td>
+                    <img
+                      src={elem.pictureUrl}
+                      alt="celeb pic"
+                      style={{ height: "100px" }}
+                    />
+                  </td>
+                  <td>
+                    <h3>{elem.name}</h3>
+                  </td>
+                  <td>
+                    <h3>{elem.popularity}</h3>
+                  </td>
+                  <td>
+                    <h3>{elem.wonOscar ? <p>🏆</p> : <p>💩</p>}</h3>
+                  </td>
+                  <td>
+                    <h3>{elem.wonEmmy ? <p>🏆</p> : <p>💩</p>}</h3>
+                  </td>
+                  <td>
+                    <button
+                      className="random-button"
+                      onClick={() => deleteCeleb(elem)}
+                    >
+                      delete
+                    </button>
+                  </td>
+                </tr>
+              );
+            })}
+          </div>
         </tbody>
       </table>
     </div>
