@@ -1,6 +1,8 @@
 .App {
   text-align: center;
+    margin: 32px;
 }
+
 
 .App-logo {
   height: 40vmin;
@@ -35,4 +37,24 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.random-button {
+  background-color: rgb(221, 239, 255);
+  padding: 16px;
+  border: none;
+  border-radius: 6px;
+  margin-bottom: 32px;
+}
+
+.random-button:hover{
+    background-color: rgb(183, 220, 253);
+}
+
+h3 {
+  padding: 16px;
+}
+
+th {
+  padding: 16px;
 }

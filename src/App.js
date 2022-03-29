@@ -6,9 +6,20 @@ import allContacts from './contacts.json'
 function App() {
   const firstFive = allContacts.slice(0, 5)
   const [celebs, setCelebs] = useState(firstFive)
+    const addContact = () => {
+    const random = allContacts[Math.floor(Math.random() * allContacts.length)];
+    if (celebs.find((celebs) => celebs.id === random.id)) {
+      if (celebs.length < allContacts.length) {
+        addContact();
+      }
+      return;
+    }
+    setCelebs((celebs) => [random, ...celebs]);
+  };
   return (
     <div className="App">
-      <h1>Iron Contact</h1>
+      <h1>NICADO Contacts</h1>
+      <button className='random-button' onClick={addContact}>Add a random celebrity</button>
       <table>
         <thead>
           <tr>
