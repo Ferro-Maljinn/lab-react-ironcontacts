@@ -1,12 +1,13 @@
-import { useState } from 'react';
-import './App.css';
-import allContacts from './contacts.json'
+import { useState } from "react";
+import "./App.css";
+import allContacts from "./contacts.json";
 /* import contacto from './contacts.json' */
 
 function App() {
-  const firstFive = allContacts.slice(0, 5)
-  const [celebs, setCelebs] = useState(firstFive)
-    const addContact = () => {
+  const firstFive = allContacts.slice(0, 5);
+  const [celebs, setCelebs] = useState(firstFive);
+
+  const addContact = () => {
     const random = allContacts[Math.floor(Math.random() * allContacts.length)];
     if (celebs.find((celebs) => celebs.id === random.id)) {
       if (celebs.length < allContacts.length) {
@@ -16,10 +17,34 @@ function App() {
     }
     setCelebs((celebs) => [random, ...celebs]);
   };
+
+  const sortedByName = () => {
+    const sortIt = [...celebs];
+    sortIt.sort((a, b) => a.name.localeCompare(b.name));
+
+    setCelebs(sortIt);
+  };
+
+  const sortedByPopularity = () => {
+    const sortIt = [...celebs];
+    sortIt.sort((a, b) => b.popularity - a.popularity);
+
+    setCelebs(sortIt);
+  };
+
   return (
     <div className="App">
       <h1>NICADO Contacts</h1>
-      <button className='random-button' onClick={addContact}>Add a random celebrity</button>
+      <button className="random-button" onClick={addContact}>
+        Add a random celebrity
+      </button>
+      <button className="random-button" onClick={sortedByName}>
+        Sort by name
+      </button>
+      <button className="random-button" onClick={sortedByPopularity}>
+        Sort by popularity
+      </button>
+
       <table>
         <thead>
           <tr>
