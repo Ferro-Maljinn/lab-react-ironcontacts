@@ -4,7 +4,7 @@ import allContacts from './contacts.json'
 /* import contacto from './contacts.json' */
 
 function App() {
-  const firstFive = allContacts.slice(0,5)
+  const firstFive = allContacts.slice(0, 5)
   const [celebs, setCelebs] = useState(firstFive)
   return (
     <div className="App">
@@ -15,6 +15,8 @@ function App() {
             <th>Picture</th>
             <th>Name</th>
             <th>Popularity</th>
+            <th>Won Oscar</th>
+            <th>Won Emmy</th>
           </tr>
         </thead>
         <tbody>
@@ -33,6 +35,12 @@ function App() {
                 </td>
                 <td>
                   <h3>{elem.popularity}</h3>
+                </td>
+                <td>
+                  <h3>{elem.wonOscar ? <p>🏆</p> : <p>💩</p>}</h3>
+                </td>
+                <td>
+                  <h3>{elem.wonEmmy ? <p>🏆</p> : <p>💩</p>}</h3>
                 </td>
               </tr>
             );
